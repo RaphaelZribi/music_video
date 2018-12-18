@@ -23,7 +23,7 @@ class Playlist(models.Model):
 		return "{}".format(self.title)
 
 class Video(models.Model):
-	video_id    = models.CharField(max_length=2000, unique=True)
+	video_id    = models.CharField(max_length=2000)
 	title       = models.CharField(max_length=2000)
 	description = models.CharField(max_length=2000)
 	thumbnail   = models.CharField(max_length=2000, validators=[URLValidator()], default=None)

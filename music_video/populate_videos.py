@@ -9,18 +9,19 @@ from main_app.models import Playlist, Video
 
 
 api_key = 'AIzaSyDK5Fjp3r91iQzNW-jaoVeuTszPIA98jJ0'
-channel_id = 'UCPVhZsC2od1xjGhgEc2NEPQ'
-playlists_api_url = 'https://www.googleapis.com/youtube/v3/search?key={}&channelId={}&part=snippet,id&order=date&maxResults={}'.format(api_key, channel_id, 20)
+channel_id = 'UCupvZG-5ko_eiXAupbDfxWw'
+playlists_api_url = 'https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId={}&key={}&maxResults={}'.format(channel_id, api_key, 20)
 
 
 def get_videos(playlist):
 	
 	playlist_api_url= 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults={}&playlistId={}&key={}'.format(20, playlist.playlist_id, api_key)
 	playlist_json = requests.get(playlist_api_url).json()
-	playlist_items = playlist_json['items']
+	#playlist_items = playlist_json['items']
 
-	for dico in playlist_items:
-		video_id =dico['id']
+
+	for dico in playlist_json['items']:
+		video_id =dico['snippet']['resourceId']['videoId']
 		title = dico['snippet']['title']
 		description= dico['snippet']['description']
 		thumbnail = dico['snippet']['thumbnails']['default']['url']
@@ -35,21 +36,19 @@ def get_videos(playlist):
 def get_playlists(playlists_api_url):
 	playlist_json = requests.get(playlists_api_url).json()
 	playlists_items = playlist_json['items']
+	play_description = []
 	for item in playlists_items: 
-		if 'playlistId' in item['id']:
-			playlist_id = item['id']['playlistId']
-			title = item['snippet']['title']
-			description= item['snippet']['description']
-			thumbnail = item['snippet']['thumbnails']['default']['url']
-		
-		
+		playlist_id = item['id']
+		title = item['snippet']['title']
+		description= item['snippet']['description']
+		thumbnail = item['snippet']['thumbnails']['high']['url']
 
 		playlist = Playlist.objects.get_or_create(playlist_id= playlist_id, 
-													  title=title, 
-													  description= description,
-													  thumbnail=thumbnail)[0]
-		get_videos(playlist)
-			
+												  title=title, 
+												  description= description,
+												  thumbnail=thumbnail)[0]
+		
+	get_videos(playlist)
 		
 
 
