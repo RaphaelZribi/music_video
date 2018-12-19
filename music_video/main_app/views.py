@@ -9,10 +9,9 @@ def home(request):
 	playlists = Playlist.objects.all()
 	print(playlists)
 	videos = Video.objects.all()
-
 	return render(request, 'home.html', { 'playlists': playlists, 'videos': videos})
 
 
-#def click_video(request video_id):
-#	video = Video.objects.get(video_id=video_id)
-#	return render (request, 'main_app/click_video.html', {'video':video})
+def video_page(request, video_id):
+	video = Video.objects.get(id=video_id)
+	return render (request, 'click_video.html', {'video':video})
