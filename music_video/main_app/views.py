@@ -8,9 +8,9 @@ from main_app.models import Playlist, Video
 def home(request):
 	playlists = Playlist.objects.all()
 	print(playlists)
-	# videos = Video.objects.all().order_by('-date')[:10]
+	videos = Video.objects.all()
 
-	return render(request, 'home.html', { 'playlists': playlists})
+	return render(request, 'home.html', { 'playlists': playlists, 'videos': videos})
 
 
 #def click_video(request video_id):
