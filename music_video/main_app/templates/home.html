@@ -10,17 +10,20 @@
 		{% for playlist in playlists %}
 	
 		<h5>{{ playlist.title }}</h5>
-		<iframe width="560" height="315" src="{{ playlist.thumbnail }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<img src="{{ playlist.thumbnail }}">
+
 	{% endfor %} 
 	</div>
 	
 	<div class="col-md-6">
 		{% for video in videos %}
+
 		<h5>{{ video.title }}</h5>
-		<iframe width="560" height="315" src="{{ video.thumbnail }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	{% endfor %}
+		<a href="{% url 'main_app:video_page' video.id %}"><img src="{{ video.thumbnail }}"></a>
+
+  	{% endfor %}
 	</div>
-	
+
 	</div>
 	
 </head>
