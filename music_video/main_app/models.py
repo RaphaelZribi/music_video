@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from identification_app.models import Profile
 #from datetime import datetime
 from django.core.validators import URLValidator
 # from django.utils import timezone
@@ -30,17 +30,6 @@ class Video(models.Model):
 	playlist    = models.ForeignKey(Playlist, on_delete=models.CASCADE)
 	# date        = models.DateField()
 	#category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
-class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	bio = models.CharField(max_length=500)
-	profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
-
-	def __repr__(self):
-		return "<User: {}>".format(self.user.username)
-
-	def __str__(self):
-		return '{} {}'.format(self.user.first_name, self.user.last_name)
 
 
 class Comment(models.Model):
