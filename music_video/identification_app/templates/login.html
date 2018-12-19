@@ -1,0 +1,11 @@
+
+<h1>Fill the Login form</h1>
+	
+	<form enctype="multipart/form-data" method='POST'>
+		{% csrf_token %}
+		{{ login_form.as_p }}
+		<input type="submit" value='signup'>
+
+	</form>
+
+	<p>Or <a href="{% url 'identification_app:signup'%}">Create an Account</a></p>
