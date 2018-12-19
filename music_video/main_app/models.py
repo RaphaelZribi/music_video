@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 #from datetime import datetime
 from django.core.validators import URLValidator
-from django.utils import timezone
+# from django.utils import timezone
 
 
 
@@ -28,6 +28,7 @@ class Video(models.Model):
 	description = models.CharField(max_length=2000)
 	thumbnail   = models.CharField(max_length=2000, validators=[URLValidator()], default=None)
 	playlist    = models.ForeignKey(Playlist, on_delete=models.CASCADE)
+	# date        = models.DateField()
 	#category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 class Profile(models.Model):
@@ -45,7 +46,7 @@ class Profile(models.Model):
 class Comment(models.Model):
 	userprofileinfo = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	text = models.TextField()
-	date = models.DateTimeField(default=timezone.now())
+	# date = models.DateTimeField(default=timezone.now())
 	video = models.ForeignKey(Video, on_delete=models.CASCADE)
 
 

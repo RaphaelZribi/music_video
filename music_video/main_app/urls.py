@@ -4,8 +4,11 @@ from . import views
 app_name = 'main_app'
 
 urlpatterns = [
-	path('', views.index, name='index'),
+
+	path('', views.home, name='home')
+
 	#path('video/<int:video_id>/', views.click_video, name='click_video'),
+
 
 
 ]

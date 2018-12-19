@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<title>Playlists</title>
+
+	<div class="modal-body row">
+	<div class="col-md-6">
+		{% for playlist in playlists %}
+	
+		<h5>{{ playlist.title }}</h5>
+		<iframe width="560" height="315" src="{{ playlist.thumbnail }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	{% endfor %} 
+	</div>
+	
+	<div class="col-md-6">
+		{% for video in videos %}
+		<h5>{{ video.title }}</h5>
+		<iframe width="560" height="315" src="{{ video.thumbnail }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	{% endfor %}
+	</div>
+	
+	</div>
+	
+</head>
+<body>
+
+</body>
+</html>
