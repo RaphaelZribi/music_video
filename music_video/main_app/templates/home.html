@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-	<title>Playlists</title>
+{% extends 'base.html' %}
+{% block title %}Home{% endblock%}
+	
+{% block content %}
 
 	<div class="modal-body row">
 	<div class="col-md-6">
@@ -12,7 +10,7 @@
 		<h5>{{ playlist.title }}</h5>
 		<img src="{{ playlist.thumbnail }}">
 
-	{% endfor %} 
+		{% endfor %} 
 	</div>
 	
 	<div class="col-md-6">
@@ -26,8 +24,4 @@
 
 	</div>
 	
-</head>
-<body>
-
-</body>
-</html>
+{% endblock %}
