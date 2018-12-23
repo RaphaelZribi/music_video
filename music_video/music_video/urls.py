@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from main_app import views
 from identification_app import views
+from comments_app import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main_app/', include('main_app.urls')),
-    path('identification_app/', include('identification_app.urls'))
+    path('identification_app/', include('identification_app.urls')),
+    path('comments_app/', include('comments_app.urls')),
 
 ]
