@@ -1,16 +1,30 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
-	<title>CLicked Video</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<title>Clicked Video</title>
+	
+</head>
+<body>
 
 	<h3>{{ video.title }}</h3>
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/{{video.video_id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	<div id="like-section">
-		{% include 'like_section.html' %}
-	</div>
+
+	
 	<h5>{{ video.description }}</h5>
-</head>
-<body>
+
+{% if request.user.is_authenticated %}
+	{% if is_liked %}
+		<button type="submit" id="like" class="fa fa-thumbs-down" data-video-id="{{ video.id }}">Dislike</button>
+	{% else %}
+		<button type="submit" id="like" class="fa fa-thumbs-up" data-video-id="{{ video.id }}">Like</button>
+	{% endif %}
+
+{% endif %}
 
 </body>
 </html>

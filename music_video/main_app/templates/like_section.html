@@ -1,24 +1,27 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
-	<title>{{ total_like }}Like{ total_like }</title>
+	<title>Like</title>
 </head>
 <body>
-	{% if request.user.is authenticated %}
-<form action="{% url 'like_post' %}" method="post">
-	{% csrf_token %}
+	<h1>hello</h1> -->
 
-	{% if is_liked %}
-	<button type="submit" id="like" name="video_id" value="{{ video.video_id }}" class="btn btn-danger">Dislike</button>
+	<!-- {% if request.user.is_authenticated %} -->
+<!-- <form action="{% url 'like_section' %}" method="post">
+	{% csrf_token %} -->
 
-	{% else %}
-	<button type="submit" id="like" name="video_id" value="{{ video.video_id }}" class="btn btn-primary">Like</button>
+	<!-- {% if is_liked %} -->
+<!-- 	<button type="submit" id="like" name="video_id" value="{{ video.video_id }}" class="btn btn-danger">Dislike</button> -->
+
+	<!-- {% else %} -->
+	<!-- <button type="submit" id="like" name="video_id" value="{{ video.video_id }}" class="btn btn-primary">Like</button>
 	{% endif %}
-</form>
-{% endif %}
+</form> -->
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<!-- {% endif %}
+ -->
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </body>
-</html>
+</html> -->
 
 
