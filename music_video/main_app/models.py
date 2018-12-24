@@ -27,3 +27,9 @@ class Video(models.Model):
 	#category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
+	def __repr__(self):
+		return "<{}>".format(self.title)
+
+	def __str__(self):
+		return "{}".format(self.title)
+
