@@ -37,6 +37,17 @@ function addComment() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 $(function() {
     function getCookie(name) {
         var cookieValue = null;
