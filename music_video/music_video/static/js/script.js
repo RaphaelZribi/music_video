@@ -36,16 +36,40 @@ function addComment() {
 }
 
 
+$(document).ready(function(){
 
+    $(document).on('click', '#like', function(event){
+        event.preventDefault();
+        var videoId = $(this).data("video-id")
+        likeDislike(videoId)
+    })
+});
 
-
-
-
-
-
-
-
-
+function likeDislike(videoId){
+    $.ajax({
+        url: '/main_app/like/' + videoId + '/',
+            type: 'POST',
+            data: {},
+        success: function(json){
+            console.log(json);
+            if (json.is_liked){
+                $('#like').addClass('fa-thumbs-down')
+                    .removeClass('fa-thumbs-up')
+                    .html('Dislike');
+            } else {
+                $('#like').addClass('fa-thumbs-up')
+                    .removeClass('fa-thumbs-down')
+                    .html('Like');
+            }   
+                
+        },
+        error: function(xhr, errmsg, err){
+            alert('Something is wrong')
+            console.log(errmsg, err);
+        }
+    })
+}
+    
 
 
 $(function() {

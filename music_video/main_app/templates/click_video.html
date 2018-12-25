@@ -11,6 +11,15 @@
 			allowfullscreen data-video-id="{{ video.video_id }}" id="videoIframe"></iframe>
 	
 	<h5>{{ video.description }}</h5>
+	{% if request.user.is_authenticated %}
+	{% if is_liked %}
+		<button type="submit" id="like" class="fa fa-thumbs-down" data-video-id="{{ video.id }}">Dislike</button>
+	{% else %}
+		<button type="submit" id="like" class="fa fa-thumbs-up" data-video-id="{{ video.id }}">Like</button>
+	{% endif %}
+
+{% endif %}
+
 	
 	<form id="addCommentForm">
 		{{ comment_form.as_p }}
@@ -24,9 +33,5 @@
 	<li class="list-group-item">{{comment.userprofileinfo.user.username}} : {{comment.text}}</li>
 	{% endfor %}                                        	
 	</ul>
-
-	
-
-
 
 {% endblock %}
